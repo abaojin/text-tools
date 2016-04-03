@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Txt2CSharpCode", "Txt2CSharpCode\Txt2CSharpCode\Txt2CSharpCode.vcxproj", "{CD8C205A-5828-45A2-888F-9B9310F04690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxtTableChecker", "TxtTableChecker\TxtTableChecker.csproj", "{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Debug|Win32.Build.0 = Debug|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Debug|x86.ActiveCfg = Debug|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Release|Win32.ActiveCfg = Release|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Release|Win32.Build.0 = Release|Win32
+		{CD8C205A-5828-45A2-888F-9B9310F04690}.Release|x86.ActiveCfg = Release|Win32
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Debug|Win32.ActiveCfg = Debug|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Debug|x86.ActiveCfg = Debug|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Debug|x86.Build.0 = Debug|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Release|Win32.ActiveCfg = Release|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Release|x86.ActiveCfg = Release|x86
+		{A8A76FBB-2348-4C2D-A074-82F0C4E3F963}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
