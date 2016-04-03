@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 战斗部分的通信协议 -->
+	<sendMessage id="701" type="CS_SEND_BATTLE_INIT" name="battleInitSend"
+		comment="初始化战斗">
+		<attribute name="initPosX" type="short" comment="精灵初始化坐标" />
+		<attribute name="initPosY" type="short" comment="精灵初始化坐标" />
+	</sendMessage>
+	<backMessage id="702" type="SC_BACK_BATTLE_INIT" name="battleInitBack"
+		comment="返回初始化战斗信息">
+		<list name="fieldSpiritSkillList" type="NetBattleSkillVO"
+			comment="野怪技能id列表">
+			<attribute name="skillID" type="int" comment="技能ID" />
+			<attribute name="skillLevel" type="short" comment="技能等级" />
+		</list>
+		<list name="roleSpiritSkillList" type="NetBattleSkillVO" comment="角色技能id列表">
+			<attribute name="skillID" type="int" comment="技能ID" />
+			<attribute name="skillLevel" type="short" comment="技能等级" />
+		</list>
+		<list name="roleSpiritAttributeList" type="NetBattleAttributeItemVO"
+			comment="战斗过程中的属性值列表VO">
+			<attribute name="attributeID" type="short" comment="属性ID标示" />
+			<attribute name="attributeValue" type="int"
+				comment="属性值 初始化战斗返回结果值，战斗攻击返回变化值" />
+		</list>
+		<list name="fieldSpiritAttributeList" type="NetBattleAttributeItemVO"
+			comment="战斗过程中的属性值列表VO">
+			<attribute name="attributeID" type="short" comment="属性ID标示" />
+			<attribute name="attributeValue" type="int"
+				comment="属性值 初始化战斗返回结果值，战斗攻击返回变化值" />
+		</list>
+		<list name="roleBuffList" type="NetBattleBuffVO" comment="角色的buff信息VO">
+			<attribute name="buffId" type="short" comment="存储的BUFFID" />
+			<attribute name="count" type="short" comment="剩余回合数" />
+		</list>
+		<list name="spiritBuffList" type="NetBattleBuffVO" comment="精灵的buff信息VO">
+			<attribute name="buffId" type="short" comment="存储的BUFFID" />
+			<attribute name="count" type="short" comment="剩余回合数" />
+		</list>
+	</backMessage>
+	<sendMessage id="703" type="CS_SEND_BATTLE_FIELDSPIRIT_ATTACK"
+		name="battleFieldSpiritAttackSend" comment="野生精灵战斗攻击请求">
+		<attribute name="skillID" type="int" comment="技能ID 没有使用技能就是-1 就代表使用的是普通攻击" />
+	</sendMessage>
+	<sendMessage id="704" type="CS_SEND_BATTLE_ROLE_ATTACK"
+		name="battleRoleAttackSend" comment="角色战斗攻击请求"></sendMessage>
+	<sendMessage id="705" type="CS_SEND_BATTLE_ROLESPIRIT_ATTACK"
+		name="battleRoleSpiritAttackSend" comment="角色精灵战斗攻击请求">
+		<attribute name="defStatus" type="int" comment="1为防御 0为不防御" />
+		<attribute name="skillID" type="int" comment="技能ID 没有使用技能就是-1 就代表使用的是普通攻击" />
+	</sendMessage>
+	<backMessage id="706" type="SC_BACK_BATTLE_ATTACK" name="battleAttackBack"
+		comment="返回战斗攻击结果信息">
+		<attribute name="defStatus" type="int" comment="1为防御 0为不防御" />
+		<object name="attackerInfo" type="NetBattleAttackerInfoVO"
+			comment="战斗攻击方信息">
+			<attribute name="attackerID" type="short" comment="0角色精灵 1野生精灵 2角色" />
+			<attribute name="attackerSkillID" type="short" comment="技能ID 没有就是-1 就是普功" />
+			<list name="attackerDebuffList" type="NetBattleBuffVO" comment="攻击者的debuff列表">
+				<attribute name="buffId" type="short" comment="存储的BUFFID" />
+				<attribute name="count" type="short" comment="剩余回合数" />
+			</list>
+			<list name="attackerBuffList" type="NetBattleBuffVO" comment="攻击者的buff列表">
+				<attribute name="buffId" type="short" comment="存储的BUFFID" />
+				<attribute name="count" type="short" comment="剩余回合数" />
+			</list>
+			<list name="attackerActionInfoList" type="NetActionInfoItemVO"
+				comment="动作类型列表 ">
+				<attribute name="actionTypeID" type="short" comment="动作类型ID 0：普通伤害 1：暴击 " />
+				<attribute name="actionTypeValue" type="int" comment="伤害值 " />
+			</list>
+			<list name="attackerAttributeChangeList" type="NetBattleAttributeItemVO"
+				comment="战斗过程中的属性值列表VO">
+				<attribute name="attributeID" type="short"
+					comment="属性ID标示 0：血量 5 ：能量 6：血上限 7：能量上限" />
+				<attribute name="attributeValue" type="int"
+					comment="属性值 初始化战斗返回结果值，战斗攻击返回变化值" />
+			</list>
+		</object>
+		<object name="hurtInfo" type="NetBattleHurtInfoVO" comment="战斗被攻击受伤信息">
+			<attribute name="hurtID" type="short" comment="被击打方 0角色精灵 1野生精灵 2角色" />
+			<attribute name="isHit" type="short" comment="0未命中 1命中" />
+			<list name="hurtActionInfoList" type="NetActionInfoItemVO"
+				comment="动作类型列表">
+				<attribute name="actionTypeID" type="short"
+					comment="动作类型ID 0：普通伤害 1：暴击 6：免伤 7：伤害转换为血 8：闪避 9：反弹伤害 11：技能伤害 " />
+				<attribute name="actionTypeValue" type="int" comment="伤害值" />
+			</list>
+			<list name="hurtDebuffList" type="NetBattleBuffVO" comment="受伤者的debuff列表">
+				<attribute name="buffId" type="short" comment="存储的BUFFID" />
+				<attribute name="count" type="short" comment="剩余回合数" />
+			</list>
+			<list name="hurtBuffList" type="NetBattleBuffVO" comment="受伤者的buff列表">
+				<attribute name="buffId" type="short" comment="存储的BUFFID" />
+				<attribute name="count" type="short" comment="剩余回合数" />
+			</list>
+			<list name="hurtAttributeChangeList" type="NetBattleAttributeItemVO"
+				comment="战斗过程中的属性值列表VO">
+				<attribute name="attributeID" type="short"
+					comment="属性ID标示 0：血量 5 ：能量 6：血上限 7：能量上限" />
+				<attribute name="attributeValue" type="int"
+					comment="属性值 初始化战斗返回结果值，战斗攻击返回变化值" />
+			</list>
+		</object>
+	</backMessage>
+	<sendMessage id="707" type="CS_SEND_BATTLE_END" name="battleEndSend"
+		comment="战斗结束请求"></sendMessage>
+	<backMessage id="708" type="SC_BACK_BATTLE_END" name="battleEndBack"
+		comment="战斗结束返回">
+		<attribute name="endReason" type="int" comment="结束原因 0 是表示有一方死亡 1表示 捕获成功" />
+		<attribute name="dead" type="int" comment="0角色精灵 1野生精灵" />
+		<attribute name="roleSpiritXP" type="int" comment="自己精灵获得的经验" />
+		<attribute name="roleSpiritHP" type="int" comment="自己精灵获得的血" />
+	</backMessage>
+	<!-- 战斗掉落协议 -->
+	<backMessage id="710" type="SC_BACK_DROP_LIST_FOR_PVE"
+		name="dropList4PveBack" comment="返回战斗掉落信息">
+		<attribute name="homeE" type="int" comment="掉落家园能量" />
+		<attribute name="passE" type="int" comment="掉落关卡能量" />
+		<attribute name="gold" type="int" comment="金币" />
+		<attribute name="userExp" type="int" comment="玩家经验" />
+		<attribute name="sprHp" type="int" comment="掉落精灵的血" />
+		<attribute name="hideItem" type="int" comment="隐藏物品收集" />
+		<attribute name="dropCardId" type="short" comment="掉落卡牌ID" />
+		<list name="dropGoods" type="DropGoodsVo" comment="道具掉落信息">
+			<attribute name="ID" type="int" comment="道具ID" />
+			<attribute name="count" type="int" comment="数量" />
+		</list>
+	</backMessage>
+	<!-- 战斗使用物品协议 -->
+	<sendMessage id="711" type="CS_SEND_BATTLE_USE_ITEM" name="battleUseItemSend"
+		comment="战斗中使用物品">
+		<attribute name="itemID" type="int" comment="使用的物品ID" />
+	</sendMessage>
+	<!-- 战斗精灵加血返回 -->
+	<backMessage id="712" type="SC_BACK_BATTLE_USE_ITEM_BACK"
+		name="battleUseItemBack" comment="返回战斗使用物品效果">
+		<attribute name="spiritRealId" type="int" comment="更新的精灵唯一id" />
+		<attribute name="hp" type="int" comment="当前血量" />
+	</backMessage>
+</root>

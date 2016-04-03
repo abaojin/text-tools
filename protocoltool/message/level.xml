@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 关卡部分的通信协议 -->
+	<sendMessage id="601" type="CS_SEND_SCENCE_REFRESH_SPIRIT_LIST"
+		name="scenceRefreshSpiritListSend" comment="获得刷新场景精灵列表">
+		<attribute name="scenceID" type="int" comment="场景ID" />
+	</sendMessage>
+	<backMessage id="602" type="SC_BACK_SCENCE_REFRESH_SPIRIT_LIST"
+		name="scenceRefreshSpiritListBack" comment="场景精灵列表刷新返回">
+		<attribute name="scenceID" type="int" comment="场景ID" />
+		<List name="spiritList" type="LevelSpiritRefreshVO" comment="精灵刷新列表VO">
+			<attribute name="posX" type="int" comment="精灵初始坐标" />
+			<attribute name="posY" type="int" comment="精灵初始坐标" />
+			<attribute name="currentPosX" type="int" comment="精灵当前坐标" />
+			<attribute name="currentPosY" type="int" comment="精灵当前坐标" />
+			<attribute name="spiritLevel" type="int" comment="精灵等级" />
+			<attribute name="currentHp" type="int" comment="野生精灵当前血量" />
+			<attribute name="character" type="int" comment="野生精灵性格" />
+			<attribute name="maxHp" type="int" comment="野生精灵最大血量" />
+		</List>
+	</backMessage>
+	<!-- 关卡系统 start -->
+	<sendMessage id="603" type="CS_SEND_GET_LEVEL_LIST" name="getLevelListSend"
+		comment="获得关卡的信息"></sendMessage>
+	<backMessage id="604" type="SC_BACK_GET_LEVEL_LIST" name="getLevelListBack"
+		comment="关卡信息的返回">
+		<List name="levelList" type="NetLevelInfoVO" comment="关卡信息的VO">
+			<attribute name="passId" type="int" comment="关卡Id" />
+			<attribute name="status" type="int" comment="关卡进行的状态" />
+			<attribute name="bestRecord" type="int" comment="最好成绩" />
+			<attribute name="currSenceId" type="int" comment="当前所在场景id" />
+			<attribute name="uPosX" type="int" comment="玩家当前所在场景内坐标" />
+			<attribute name="uPosY" type="int" comment="玩家当前所在场景内坐标" />
+			<attribute name="sPosX" type="int" comment="精灵当前坐标" />
+			<attribute name="sPosY" type="int" comment="精灵当前坐标" />
+			<attribute name="mapClip" type="int" comment="藏宝图数量" />
+			<attribute name="passClipNum" type="int" comment="过关碎片数量" />
+			<attribute name="hideNum" type="int" comment="隐藏物品数量" />
+			<attribute name="boxNum" type="int" comment="宝箱数量" />
+			<attribute name="isOpenHideBox" type="int" comment="是否打开隐藏宝箱 0:未打开，１：打开了" />
+		</List>
+	</backMessage>
+	<!-- 更新关卡通讯部分 -->
+	<backMessage id="605" type="SC_BACK_UPDATE_LEVEL_INFO"
+		name="updateLevelInfoBack" comment="返回更新关卡信息">
+		<attribute name="passId" type="short" comment="关卡Id" />
+		<attribute name="status" type="short" comment="关卡进行的状态" />
+		<attribute name="bestRecord" type="short" comment="最好成绩" />
+		<attribute name="currSenceId" type="short" comment="当前所在场景id" />
+		<attribute name="uPosX" type="short" comment="玩家当前所在场景内坐标" />
+		<attribute name="uPosY" type="short" comment="玩家当前所在场景内坐标" />
+		<attribute name="sPosX" type="short" comment="精灵当前坐标" />
+		<attribute name="sPosY" type="short" comment="精灵当前坐标" />
+		<attribute name="mapClip" type="short" comment="藏宝图数量" />
+		<attribute name="passClipNum" type="short" comment="过关碎片数量" />
+		<attribute name="hideNum" type="short" comment="隐藏物品数量" />
+		<attribute name="boxNum" type="short" comment="宝箱数量" />
+		<attribute name="isOpenHideBox" type="int" comment="是否打开隐藏宝箱 0:未打开，１：打开了" />
+	</backMessage>
+	<!-- 重置关卡的通信协议 -->
+	<sendMessage id="606" type="CS_SEND_RESET_LEVEL" name="resetLevelSend"
+		comment="重置关卡">
+		<attribute name="passId" type="int" comment="关卡Id" />
+	</sendMessage>
+	<!-- 关卡系统 end -->
+	<!-- 关卡掉落协议 -->
+	<backMessage id="610" type="SC_BACK_DROP_LIST_FOR_PASS"
+		name="dropList4PassBack" comment="返回关卡掉落信息">
+		<attribute name="posX" type="short" comment="掉落坐标" />
+		<attribute name="posY" type="short" comment="掉落坐标" />
+		<attribute name="homeE" type="int" comment="掉落家园能量" />
+		<attribute name="passE" type="int" comment="掉落关卡能量" />
+		<attribute name="gold" type="int" comment="金币" />
+		<attribute name="userExp" type="int" comment="玩家经验" />
+		<attribute name="sprHp" type="int" comment="掉落精灵的血" />
+		<attribute name="star" type="int" comment="收集星" />
+		<list name="dropGoods" type="DropGoodsVo" comment="道具掉落信息">
+			<attribute name="ID" type="int" comment="道具ID" />
+			<attribute name="count" type="int" comment="数量" />
+		</list>
+	</backMessage>
+	<!-- 初始化关卡协议 -->
+	<sendMessage id="611" type="CS_SEND_ENTER_LEVEL" name="enterLevelSend"
+		comment="进入关卡">
+		<attribute name="levelId" type="int" comment="准备进入的关卡id" />
+	</sendMessage>
+	<!-- 进入场景 -->
+	<sendMessage id="613" type="CS_SEND_ENTER_SENCE" name="enterSenceSend"
+		comment="进入场景">
+		<attribute name="senceId" type="int" comment="准备进入的场景id" />
+	</sendMessage>
+	<backMessage id="614" type="SC_BACK_ENTER_SENCE" name="enterSenceBack"
+		comment="返回进入场景的信息">
+		<list name="senceCleanList" type="NetSenceCleanVo" comment="场景清理信息">
+			<attribute name="posX" type="short" comment="掉落坐标" />
+			<attribute name="posY" type="short" comment="掉落坐标" />
+			<attribute name="clickNum" type="short" comment="清理的次数 -1为完成" />
+		</list>
+		<list name="senceBoxList" type="NetSenceCollectVo" comment="宝箱打开信息">
+			<attribute name="posX" type="short" comment="坐标" />
+			<attribute name="posY" type="short" comment="坐标" />
+		</list>
+		<list name="senceClipList" type="NetSenceCollectVo" comment="过关碎片收集信息">
+			<attribute name="posX" type="short" comment="坐标" />
+			<attribute name="posY" type="short" comment="坐标" />
+		</list>
+		<list name="senceMineList" type="NetSenceMineVo" comment="场景的矿产收集信息">
+			<attribute name="posX" type="short" comment="坐标" />
+			<attribute name="posY" type="short" comment="坐标" />
+			<attribute name="time" type="int" comment="采集冷却倒计时" />
+		</list>
+		<List name="levelList" type="NetSwithchVO" comment="关卡全部信息的VO">
+			<attribute name="status" type="int" comment="状态 0,开启，1未开启 2阻挡" />
+			<attribute name="visible" type="int" comment="是否可见 0,可见，1不可见" />
+			<attribute name="walkUnable" type="int" comment="机关当前是否可以行走" />
+			<attribute name="scrap" type="int" comment="机关是否废弃" />
+			<attribute name="index" type="int" comment="机关在关卡中对应唯一标示" />
+			<attribute name="currentpoxX" type="int" comment="机关的当前位置X" />
+			<attribute name="currentpoxY" type="int" comment="机关的当前位置Y" />
+			<attribute name="poxX" type="int" comment="机关初始化的位置X" />
+			<attribute name="poxY" type="int" comment="机关初始化的位置Y" />
+			<attribute name="id" type="int" comment="机关类型ID" />
+			<attribute name="walkableThreshold" type="int"
+				comment="能否改变机关对地图行走属性的影响的阈值" />
+			<attribute name="statusThreshold" type="int" comment="状态能否改变的阈值" />
+			<attribute name="isScrapThreshold" type="int" comment="是否废弃的阈值" />
+			<attribute name="visibleThreshold" type="int" comment="是否可见的阈值" />
+			<attribute name="mapPointThreshold" type="int"
+				comment="能否通过该机关改变地图行走点的阈值" />
+		</List>
+	</backMessage>
+	<!-- 收集相关 -->
+	<sendMessage id="615" type="CS_SEND_OPEN_LEVEL_BOX" name="openLevelBoxSend"
+		comment="打开关卡宝箱">
+		<attribute name="posX" type="short" comment="宝箱坐标" />
+		<attribute name="posY" type="short" comment="宝箱坐标" />
+	</sendMessage>
+	<sendMessage id="616" type="CS_SEND_OPEN_LEVEL_CLIP" name="collectionClipSend"
+		comment="收集碎片">
+		<attribute name="posX" type="short" comment="碎片坐标" />
+		<attribute name="posY" type="short" comment="碎片坐标" />
+	</sendMessage>
+	<sendMessage id="617" type="CS_SEND_CLEAN_LEVEL_BARRIER"
+		name="cleanLevelBarrierSend" comment="关卡清理">
+		<attribute name="posX" type="short" comment="障碍坐标" />
+		<attribute name="posY" type="short" comment="障碍坐标" />
+	</sendMessage>
+	<sendMessage id="619" type="CS_SEND_COLLECT_MINE" name="collectMineSend"
+		comment="收集矿产">
+		<attribute name="posX" type="short" comment="坐标" />
+		<attribute name="posY" type="short" comment="坐标" />
+	</sendMessage>
+	<!-- 改变机关状态 -->
+	<sendMessage id="618" type="CS_SEND_UPDATE_SWITHCH" name="updateSwithchSend"
+		comment="改变机关状态">
+		<list name="swithdchList" type="NetUpdateSwithchVo" comment="改变了状态的机关">
+			<attribute name="Id" type="short" comment="机关对应ID" />
+			<attribute name="posX" type="short" comment="坐标(初始化坐标)" />
+			<attribute name="posY" type="short" comment="坐标 (初始化坐标)" />
+			<list name="updateStatusList" type="NetUpdateSwithchStatusVo"
+				comment="改变了的属性">
+				<attribute name="statusId" type="short"
+					comment="状态对应的ID 0是否开启 1 是否可见 2是否可以行走 3是否废弃 4状态改变阈值 5可见改变阈值 6行走改变阈值 7废弃改变阈值 8坐标点改变阈值 " />
+				<attribute name="statusValue" type="short" comment="对应改变了状态的值" />
+			</list>
+		</list>
+	</sendMessage>
+	<!-- 记录机关中人物的位置 -->
+	<sendMessage id="620" type="CS_SEND_ROLE_LOCATION_ON_LEVEL"
+		name="roleLocationOnLevelSend" comment="记录机关中人物的位置">
+		<attribute name="vaildCode" type="String" comment="校验码" />
+		<attribute name="currentPosX" type="short" comment="坐标" />
+		<attribute name="currentPosY" type="short" comment="坐标" />
+	</sendMessage>
+	<backMessage id="621" type="SC_BACK_DROP_LIST_FOR_PASS2"
+		name="dropList4Pass2Back" comment="返回关卡掉落收集品信息">
+		<attribute name="posX" type="short" comment="掉落坐标" />
+		<attribute name="posY" type="short" comment="掉落坐标" />
+		<attribute name="mapClip" type="short" comment="藏宝图碎片" />
+		<attribute name="passClip" type="short" comment="关卡碎片" />
+		<list name="dropGoods" type="DropGoodsVo" comment="道具掉落信息,包括矿石">
+			<attribute name="ID" type="int" comment="道具ID" />
+			<attribute name="count" type="int" comment="数量" />
+		</list>
+	</backMessage>
+	<sendMessage id="622" type="CS_SEND_COMPLETE_LEVEL" name="userCompleteLevelSend"
+		comment="玩家完成关卡">
+		<attribute name="passId" type="short" comment="关卡id" />
+	</sendMessage>
+	<backMessage id="623" type="SC_BACK_COMPLETE_LEVEL" name="userCompleteLevelBack"
+		comment="玩家完成关卡结算信息">
+		<attribute name="gold" type="short" comment="掉落坐标" />
+		<attribute name="energy" type="short" comment="掉落坐标" />
+		<attribute name="exp" type="short" comment="藏宝图碎片" />
+		<attribute name="result" type="short" comment="结算分数 10 A 11 B 12 C" />
+		<list name="dropGoods" type="DropGoodsVo" comment="道具掉落信息">
+			<attribute name="ID" type="int" comment="道具ID" />
+			<attribute name="count" type="int" comment="数量" />
+		</list>
+		<list name="dropCard" type="short" comment="道具卡牌信息" />
+	</backMessage>
+	<sendMessage id="624" type="CS_SEND_OPEN_LEVEL_HIDE_BOX"
+		name="openLevelHideBoxSend" comment="打开关卡隐藏宝箱">
+		<attribute name="posX" type="short" comment="宝箱坐标" />
+		<attribute name="posY" type="short" comment="宝箱坐标" />
+	</sendMessage>
+	<backMessage id="625" type="SC_BACK_OPEN_LEVEL_HIDE_BOX"
+		name="openLevelHideBoxBack" comment="返回打开隐藏宝箱信息">
+		<attribute name="message" type="String" comment="错误信息,如果成功就返回空" />
+		<attribute name="passId" type="int" comment="关卡Id" />
+		<attribute name="isOpenHideBox" type="int"
+			comment="是否成功打开隐藏宝箱 0:未成功打开，１：成功打开了" />
+	</backMessage>
+	<!-- 消耗玩家精力 -->
+	<sendMessage id="626" type="CS_SEND_COST_ROLE_LEVEL_ENERGY"
+		name="costRoleLevelEnergySend" comment="关卡中消耗玩家精力">
+		<attribute name="costE" type="int" comment="扣除精力值" />
+	</sendMessage>
+</root>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="protocol" default="init" basedir=".">
+	
+	<path id="lib-classpath">
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<property name="" value=""/>
+	<property name="" value=""/>
+	<property name="" value=""/>
+	<property name="jarName" value="sns-protocol-1.0.jar"/>
+	
+	<target name="init">
+		<delete dir="bin"/>
+		<mkdir dir="bin"/>
+	</target>
+	
+	<target name="compile">
+		<javac srcdir="src" destdir="bin">
+			<compilerarg line="-encoding UTF-8"/>
+			<classpath refid="lib-classpath"/>
+		</javac>
+	</target>
+	
+	<target name="package">
+		<jar destfile="lib/${jarName}" basedir="bin">
+		</jar>
+	</target>
+
+</project>

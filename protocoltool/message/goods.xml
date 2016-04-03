@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 初始化角色背包道具信息通讯部分 -->
+	<sendMessage id="301" type="CS_SEND_INIT_PACK_GOODS" name="initPackGoodsSend"
+		comment="初始化背包道具信息"></sendMessage>
+	<backMessage id="302" type="SC_BACK_INIT_PACK_GOODS" name="initPackGoodsBack"
+		comment="返回背包道具信息">
+		<list name="goodsInfoList" type="NetGoodsInfoVO" comment="道具信息">
+			<attribute name="index" type="int" comment="道具在背包中的索引(唯一标识)" />
+			<attribute name="ID" type="int" comment="道具ID" />
+			<attribute name="count" type="int" comment="数量" />
+			<attribute name="isNew" type="int" comment="是否是新加入的道具（1 是 0 否）" />
+		</list>
+	</backMessage>
+	<!-- 添加背包道具 -->
+	<backMessage id="303" type="SC_BACK_UPDATE_PACK_GOODS"
+		name="updatePackGoodsBack" comment="返回更新背包道具信息">
+		<attribute name="option" type="int" comment="对背包的操作 增加 修改 删除" />
+		<attribute name="index" type="int" comment="道具在背包中的索引(唯一标识)" />
+		<attribute name="ID" type="int" comment="道具ID" />
+		<attribute name="count" type="int" comment="数量" />
+		<attribute name="isNew" type="int" comment="是否是新加入的道具（1 是 0 否）" />
+	</backMessage>
+	<!-- 使用背包道具 -->
+	<sendMessage id="304" type="CS_SEND_USE_ONE_PACK_GOOD"
+		name="useOnePackGoodSend" comment="使用背包道具">
+		<attribute name="ID" type="int" comment="道具ID" />
+		<attribute name="num" type="int" comment="道具数量" />
+	</sendMessage>
+	<!-- 查看新道具 -->
+	<sendMessage id="305" type="CS_SEND_VIEW_NEW_PACK_GOOD"
+		name="viewNewPackGoodSend" comment="查看新背包道具">
+		<list name="indexs" type="int" comment="道具模板id" />
+	</sendMessage>
+	<!-- 玩家背包满 -->
+	<backMessage id="306" type="SC_BACK_USER_BAG_FULL" name="userBagFullBack"
+		comment="玩家背包满"></backMessage>
+</root>
